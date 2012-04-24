@@ -1,0 +1,50 @@
+hardstatus on
+hardstatus alwayslastline
+
+#hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y} %Y/%m/%d %c "
+# caption instead of hardstatus
+#caption always "%{Yb} %D %Y-%02m-%02d %0c %{k}|%{G} %l %{k}|%{W} %-w%{+b}%n %t%{-b}%+w"
+caption string "%{Yb} %{k}| %{G} %l %{k}|%{W} %-w%{+b}%n %t%{-b}%+w"
+#hardstatus string "%{Yb} %D %Y-%02m-%02d %0c %{k}|%{G} %l %{k}|%{W} %-w%{+b}%n %t%{-b}%+w"
+hardstatus string "%{.bY} %D %0c  %{k}| %{..G} %H  %{k}| %-w%{.bW}%n %t%{-}%+w %=% %{G} %l"
+#caption string "%w"
+
+defscrollback 10000
+startup_message off
+multiuser on
+escape `` 
+vbell on
+
+screen -t local 0
+screen -t bash 1
+
+hstatus ""
+#shell -$SHELL
+term -$TERM
+nonblock on
+defutf8 on
+
+msgwait 1
+
+termcapinfo xterm* ti@:te@
+
+# terminfo and termcap for nice 256 color terminal
+# allow bold colors - necessary for some reason
+attrcolor b ".I"
+# tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# erase background with current bg color
+defbce "on"
+
+
+# Binds
+bind c screen 1
+bind 0 screen 10
+
+bind - resize -3
+bind + resize +3
+bind = resize =
+bind _ resize max
+
+bindkey "^[," prev
+bindkey "^[." next
