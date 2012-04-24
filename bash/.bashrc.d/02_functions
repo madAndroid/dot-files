@@ -1,0 +1,95 @@
+cdd() {
+    if [ -z $1 ]; then
+        N=1
+    else
+        N=$1
+    fi
+
+    for (( i = 0; i < $N; i++ )); do
+        cd ..
+    done
+}
+
+title() {
+    if [ $STY ]; then
+        echo -ne "\033 k$1\033\\" 
+    else
+        echo -ne "\033]2;$1\007"
+    fi
+}
+
+#vi() {
+#    title "$1"
+#    type -f vim > /dev/null 2>&1
+#    if [ "$?" -eq 0 ]; then
+#        command vim $@
+#    else
+#        command vi $@
+#    fi
+#    title "bash"
+#}
+
+ssh() {
+    if [ -r $AGENT_RC ]; then
+        . $AGENT_RC > /dev/null 2>&1
+    fi
+
+    if [ "$SSH_AGENT_PID" ]; then
+        ps -p $SSH_AGENT_PID | grep -q "ssh-agent"
+
+        if [ "$?" -eq 1 ]; then
+            ssh-agent > $AGENT_RC
+        fi
+    else
+        ssh-agent > $AGENT_RC
+    fi
+
+    . $AGENT_RC > /dev/null 2>&1
+
+    ssh-add -L | grep -q "no identities"
+
+    if [ "$?" -eq 0 ]; then
+        ssh-add
+    fi
+
+    title `echo $@ | sed -e 's/\..*//'`
+
+    command ssh $@
+
+    title 'bash'
+}
+
+ban_ip() {
+    sudo iptables -I INPUT -s $1 -j DROP -v
+}
+
+ptime() {
+    perl -e 'printf "%s\n", scalar localtime $ARGV[ 0 ]' $@
+}
+
+spell() {
+    echo -n $1 | ispell | grep "^word" | head -1
+}
+
+sr() {
+    title $1
+    screen -Urx $1
+}
+
+length() {
+    perl -e 'printf "%d\n", length $ARGV[ 0 ]' $1
+}
+
+grep() {
+    echo $@ | command grep -q '[A-Z]'
+
+    if [ "$?" -eq 0 ]; then
+        command grep "$@"
+    else
+        command grep -i "$@"
+    fi
+}
+
+scpable() {
+    echo "$USER@$( hostname -f ):$( pwd )/$1"
+}

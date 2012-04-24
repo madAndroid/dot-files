@@ -1,0 +1,12 @@
+alias ls="/bin/ls -h -F --color=auto"
+alias ll="ls -l"
+alias la="ls -la"
+alias whois="whois -H"
+alias df="df -h"
+#alias screen="screen -T xterm"
+alias snv="svn"
+alias mkdir="mkdir -p"
+
+alias sls="screen -ls"
+
+alias calc="perl -ple'\$_=eval'"

@@ -1,0 +1,13 @@
+#export PATH="~/bin:/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin"
+#export PS1="\u@\h:\w % "
+#export TERM=xterm
+#export VISUAL=vi
+#export EDITOR=vi
+#export LESS="isrRX"
+#export PROMPT_COMMAND='history -a'
+#export FIGNORE=".svn"
+#export HISTCONTROL="ignoreboth"
+#export HISTTIMEFORMAT="%a %Y/%m/%d %T "
+#export AGENT_RC="$HOME/.bashrc.d/50_ssh-agent"
+#export LOG_REGEXP="s/[^\x09\x0A\x20-\x7E]/./g"
+#export PERL5LIB="/home/system/lib/global:$HOME/lib/perl5"

@@ -1,0 +1,9 @@
+#ldap() {
+#    LOOKUP="(cn=$@)"
+#    HOST=$(host -t srv _ldap._tcp.pdc._msdcs | cut -d " " -f 8)
+#    ldapsearch -h $HOST -D "THISISGLOBAL\\Tom.Clark" -x -W -b 'OU=Global,DC=thisisglobal,DC=com' "$LOOKUP"
+#}
+#
+#stealsvn() {
+#    sudo svn switch --relocate $(svn info | awk '/^URL/ {print $2}') svn+ssh://${SUDO_USER-$USER}@10.73.1.67/home/svn/repos/infrastructure/trunk/puppet
+#}
