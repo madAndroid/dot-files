@@ -9,7 +9,7 @@
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
-#HISTCONTROL=ignoredups:ignorespace
+HISTCONTROL=ignoredups:ignorespace
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -25,7 +25,7 @@ EDITOR=vim
 LESS=isrRX
 PROMPT_COMMAND="history -a"
 FIGNORE=.svn
-HISTCONTROL=ignoreboth
+#HISTCONTROL=ignoreboth
 HISTTIMEFORMAT="%a %Y/%m/%d %T "
 
 # check the window size after each command and, if necessary,
@@ -163,6 +163,13 @@ then
 else
 	echo "Directory '$base' does not exist."
 	echo "Nothing to do"
+        echo ""
+        echo ""
+        if [ -f ~/.pythonrc ]; 
+            then
+                echo "Exporting python startup, for autocomplete"
+                export PYTHONSTARTUP=~/.pythonrc
+        fi
 fi
 
 for RC in ~/.bashrc.d/*; do
