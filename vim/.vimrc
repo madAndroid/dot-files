@@ -4,6 +4,9 @@ set encoding=utf8
 " Allow lines to extend off the side of the screen
 set nowrap
 
+" More than the standard 50 lines of scrollback
+set history=300
+
 " Start scrolling when we're 5 chars from the edge of the screen
 set sidescrolloff=5
 
@@ -89,13 +92,13 @@ highlight   PmenuSbar           term=NONE cterm=NONE ctermfg=7 ctermbg=0 gui=NON
 highlight   PmenuThumb          term=NONE cterm=NONE ctermfg=0 ctermbg=7 gui=NONE guifg=Black guibg=White 
 
 " Highlight syntax
-syntax on
+" syntax on
 
 " KEY BINDINGS
 
 " Tab completion of variables
-inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
-inoremap <S-tab> <c-r>=InsertTabWrapper ("backward")<cr>
+"inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
+"inoremap <S-tab> <c-r>=InsertTabWrapper ("backward")<cr>
 
 " Syntax check
 map <F1> :w ! perl -c<CR>
@@ -125,36 +128,49 @@ map <silent> <F12> :set paste!<CR>
 " Taglist settings
 nnoremap <silent> <F5> :TlistToggle<CR>
 
-" Exit if taglist is last window
-let Tlist_Exit_OnlyWindow = 1
+"" Exit if taglist is last window
+"let Tlist_Exit_OnlyWindow = 1
+"
+"" Only show tags for this file
+"let Tlist_Show_One_File = 1
+"
+"" Don't bother showing a fold column
+"let Tlist_Enable_Fold_Column = 0
+"
+"" Close taglist on select
+"let Tlist_Close_On_Select = 1
+"
+"" Don't show cruft
+"let Tlist_Compact_Format = 1
+"
+"" Give it focus when we open
+"let Tlist_GainFocus_On_ToggleOpen = 1
+"
+"" Make window as wide as necessary
+"let Tlist_Inc_Winwidth = 1
 
-" Only show tags for this file
-let Tlist_Show_One_File = 1
+" autocmd BufReadPost *.tt set syntax=html
 
-" Don't bother showing a fold column
-let Tlist_Enable_Fold_Column = 0
+"function! InsertTabWrapper(direction)
+"    let col = col('.') - 1
+"    if !col || getline('.')[col - 1] !~ '\k'
+"        return "\<tab>"
+"    elseif "backward" == a:direction
+"        return "\<c-p>"
+"    else
+"        return "\<c-n>"
+"    endif
+"endfunction
 
-" Close taglist on select
-let Tlist_Close_On_Select = 1
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+        \| exe "normal g'\"" | endif
+endif
 
-" Don't show cruft
-let Tlist_Compact_Format = 1
-
-" Give it focus when we open
-let Tlist_GainFocus_On_ToggleOpen = 1
-
-" Make window as wide as necessary
-let Tlist_Inc_Winwidth = 1
-
-autocmd BufReadPost *.tt set syntax=html
-
-function! InsertTabWrapper(direction)
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    elseif "backward" == a:direction
-        return "\<c-p>"
-    else
-        return "\<c-n>"
-    endif
-endfunction
+" Tell vim to remember certain things when we exit
+"  '10  :  marks will be remembered for up to 10 previously edited files
+"  "100 :  will save up to 100 lines for each register
+"  :20  :  up to 20 lines of command-line history will be remembered
+"  %    :  saves and restores the buffer list
+"  n... :  where to save the viminfo files
+set viminfo='10,\"100,:20,%,n~/.viminfo
