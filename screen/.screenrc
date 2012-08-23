@@ -9,6 +9,10 @@ caption string "%{Yb} %{k}| %{G} %l %{k}|%{W} %-w%{+b}%n %t%{-b}%+w"
 hardstatus string "%{.bY} %D %0c  %{k}| %{..G} %H  %{k}| %-w%{.bW}%n %t%{-}%+w %=% %{G} %l"
 #caption string "%w"
 
+deflog on
+logfile /home/andrew/Documents/screen-logs/screen-log.%S.%d-%M-%y-%n.%t
+logtstamp on
+
 defscrollback 10000
 startup_message off
 multiuser on
@@ -16,16 +20,16 @@ escape ``
 vbell on
 
 screen -t local 0
-screen -t bash 1
+screen -t DEV 1
+screen -t remote1 2
+screen -t remote2 3
 
 hstatus ""
 #shell -$SHELL
 term -$TERM
 nonblock on
 defutf8 on
-
 msgwait 1
-
 termcapinfo xterm* ti@:te@
 
 # terminfo and termcap for nice 256 color terminal
@@ -36,6 +40,11 @@ termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 # erase background with current bg color
 defbce "on"
 
+# Add cool line to make copying to x clipboard possible.
+# This binds `b to copy screen's copy buffer to the system clipboard.
+## requires xsel
+
+bind b eval writebuf 'exec /bin/sh -c "xsel -i -b < /tmp/screen-exchange"' 'exec /bin/sh -c "killall xsel"'
 
 # Binds
 bind c screen 1
