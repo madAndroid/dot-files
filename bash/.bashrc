@@ -16,7 +16,7 @@ shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=100000
-HISTFILESIZE=2000000
+HISTFILESIZE=2000000000
 PATH="~/bin:/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:~/scripts"
 PS1="\u@\h:\w %"
 TERM=xterm
@@ -114,12 +114,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-## to "stealsvn" from the current user
-
-#stealsvn() {
-#        sudo svn switch --relocate $(svn info | awk '/^URL/ {print $2}') svn+ssh://${SUDO_USER-$USER}@10.73.1.67/home/svn/repos/infrastructure/trunk/puppet
-#}
-
 ###########################################
 #                                         #
 #          USER ADDED FUNCTIONS           #
@@ -139,19 +133,13 @@ then
 	# directory exists to add it to path
 	PATH=$PATH:$base
 
-	# display message
-	echo "- adding '$base'..."
-
 	# add sub directories
 	for directory in `/usr/bin/find $base -mindepth 1 -maxdepth 1 -type d -not -name .svn`
 	do
-		
 		# add directory
 		PATH=$PATH:$directory 
-		
 		# display message
-		echo "- adding '$directory'..."
-
+		echo "- adding scripts: $directory'..."
 	done
 
 	# display message 
@@ -165,11 +153,12 @@ else
 	echo "Nothing to do"
         echo ""
         echo ""
-        if [ -f ~/.pythonrc ]; 
-            then
-                echo "Exporting python startup, for autocomplete"
-                export PYTHONSTARTUP=~/.pythonrc
-        fi
+fi
+
+if [ -f ~/.pythonrc ]; 
+    then
+        echo "Exporting python startup, for autocomplete"
+        export PYTHONSTARTUP=~/.pythonrc
 fi
 
 for RC in ~/.bashrc.d/*; do

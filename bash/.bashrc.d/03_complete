@@ -1,0 +1,10 @@
+### ssh hosts autocomplete:
+complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -v "\["`;)" ssh
+
+## rake task autocomplete:
+rake_tab_complete="$base/autocomplete/rake_complete.rb"
+
+if [ -f $rake_tab_complete ]; then 
+    complete -C $rake_tab_complete -o default rake
+fi
+
