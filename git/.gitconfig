@@ -1,0 +1,44 @@
+[user]
+	name = Andrew Stangl
+	email = andrewstangl@gmail.com
+
+#### from: http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+[alias]
+
+    cp = cherry-pick
+    st = status -s
+    cl = clone
+    ci = commit
+    co = checkout
+    br = branch 
+    diff = diff --word-diff
+    dc = diff --cached
+
+    l = !git log --graph --pretty='%C(yellow)%h%Creset %Cgreen(%ar)%Creset %C(bold blue)<%an>%Creset %C(red)%d%Creset %s' $*
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+    lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+    le = log --oneline --decorate
+    fl = log -u
+    dl = "!git ll -1"
+    dlc = diff --cached HEAD^
+
+    dr  = "!f() { git diff "$1"^.."$1"; }; f"
+    lc  = "!f() { git ll "$1"^.."$1"; }; f"
+    diffr  = "!f() { git diff "$1"^.."$1"; }; f"
+
+    f = "!git ls-files | grep -i"
+    gr = grep -Ii
+
+    ### list alias:
+    la = "!git config -l | grep alias | cut -c 7-"
+    
+    ### Tags:
+    lt = describe --tags --abbrev=0
+
+    ### Stashes
+    sl = stash list
+    sa = stash apply
+    ss = stash save
