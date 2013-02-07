@@ -21,8 +21,7 @@ vbell on
 
 screen -t local 0
 screen -t DEV 1
-screen -t remote1 2
-screen -t remote2 3
+screen -t screen 2
 
 hstatus ""
 #shell -$SHELL
@@ -48,6 +47,7 @@ bind b eval writebuf 'exec /bin/sh -c "xsel -i -b < /tmp/screen-exchange"' 'exec
 
 # Binds
 bind c screen 1
+bind z stuff "screen -X chdir \$PWD; clear; screen^M"
 bind 0 screen 10
 
 bind - resize -3
