@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 " UTF8 by default
 set encoding=utf8
 
