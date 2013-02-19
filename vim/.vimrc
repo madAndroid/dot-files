@@ -172,6 +172,10 @@ if has("autocmd")
         \| exe "normal g'\"" | endif
 endif
 
+set nocompatible      " We're running Vim, not Vi!
+syntax on             " Enable syntax highlighting
+filetype plugin indent on    " Enable filetype-specific indenting
+
 " Tell vim to remember certain things when we exit
 "  '10  :  marks will be remembered for up to 10 previously edited files
 "  "100 :  will save up to 100 lines for each register
