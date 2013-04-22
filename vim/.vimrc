@@ -91,6 +91,9 @@ set t_mr=[0;1;37;44m
 " http://kien.github.com/ctrlp.vim/#installation
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
+set modeline
+set modelines=5
+
 highlight   Pmenu               term=NONE cterm=NONE ctermfg=7 ctermbg=5 gui=NONE guifg=White guibg=Magenta
 highlight   PmenuSel            term=NONE cterm=NONE ctermfg=0 ctermbg=7 gui=NONE guifg=Black guibg=White
 highlight   PmenuSbar           term=NONE cterm=NONE ctermfg=7 ctermbg=0 gui=NONE guifg=White guibg=Black
@@ -115,7 +118,7 @@ map <F2> :w ! perl<CR>
 map <F3> :w ! pod2text<CR>
 
 " See the diffs of the current file
-map <F4> :! git diff %<CR>
+map <F4> :! git diff --color %<CR>
 
 " Comment/uncomment block
 map <F5> : s/^/#/<CR>
