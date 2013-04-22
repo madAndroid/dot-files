@@ -19,9 +19,7 @@ multiuser on
 escape `` 
 vbell on
 
-screen -t local 0
-screen -t DEV 1
-screen -t screen 2
+screen -t first 0
 
 hstatus ""
 #shell -$SHELL
