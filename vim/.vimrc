@@ -93,6 +93,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 set modeline
 set modelines=5
+set nogdefault
 
 highlight   Pmenu               term=NONE cterm=NONE ctermfg=7 ctermbg=5 gui=NONE guifg=White guibg=Magenta
 highlight   PmenuSel            term=NONE cterm=NONE ctermfg=0 ctermbg=7 gui=NONE guifg=Black guibg=White
