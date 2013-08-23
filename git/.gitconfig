@@ -12,15 +12,14 @@
     pm = pull --no-ff --no-commit
     fu = fetch upstream
     mum = merge upstream/master --no-ff --no-commit
+    mg = merge --no-ff --no-commit
     cl = clone
     ci = commit
     cm = commit -m
     co = checkout
     br = branch 
-    diff = diff --word-diff
     dc = diff --cached
     df = diff --color
-    #dfw = diff --color-words
     dfw = diff --word-diff=color --word-diff=plain
 
     l = !git log --graph --pretty='%C(yellow)%h%Creset %Cgreen(%ar)%Creset %C(bold blue)<%an>%Creset %C(red)%d%Creset %s' $*
