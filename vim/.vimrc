@@ -116,7 +116,7 @@ map <F1> :w ! perl -c<CR>
 map <F2> :w ! perl<CR>
 
 " View POD
-map <F3> :w ! pod2text<CR>
+map <F3> :%s/\s\+$//<CR>
 
 " See the diffs of the current file
 map <F4> :! git diff --color %<CR>
@@ -125,8 +125,15 @@ map <F4> :! git diff --color %<CR>
 map <F5> : s/^/#/<CR>
 map <F6> : s/^#//<CR>
 
+" Numbering on/off
+map <F7> :set nonu<CR>
+map <F8> :set nu<CR>
+
 " Pipe selection through perltidy
 map <silent> <F9> :!perltidy -q<CR>
+
+" sudo save
+map <F10> :w ! sudo tee % <CR><CR>
 
 " Toggle search highlighting
 map <silent> <F11> :set hlsearch!<CR>
