@@ -22,6 +22,8 @@
     df = diff --color
     dfw = diff --word-diff=color --word-diff=plain
 
+    rh = reset HEAD
+
     l = !git log --graph --pretty='%C(yellow)%h%Creset %Cgreen(%ar)%Creset %C(bold blue)<%an>%Creset %C(red)%d%Creset %s' $*
     ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
