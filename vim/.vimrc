@@ -113,7 +113,10 @@ highlight   PmenuThumb          term=NONE cterm=NONE ctermfg=0 ctermbg=7 gui=NON
 map <F1> :w ! perl -c<CR>
 
 " Run the code
-map <F2> :w ! perl<CR>
+"map <F2> :w ! perl<CR>
+
+" Toggle search highlighting
+map <F2> :set hlsearch!<CR>
 
 " View POD
 map <F3> :%s/\s\+$//<CR>
@@ -129,20 +132,14 @@ map <F6> : s/^#//<CR>
 map <F7> :set nonu<CR>
 map <F8> :set nu<CR>
 
-" Pipe selection through perltidy
-map <silent> <F9> :!perltidy -q<CR>
+" Toggle paste mode
+map <F9> :set paste!<CR>
 
 " sudo save
 map <F10> :w ! sudo tee % <CR><CR>
 
-" Toggle search highlighting
-map <silent> <F11> :set hlsearch!<CR>
-
-" Toggle paste mode
-map <silent> <F12> :set paste!<CR>
-
 " Taglist settings
-nnoremap <silent> <F5> :TlistToggle<CR>
+" nnoremap <silent> <F5> :TlistToggle<CR>
 
 "" Exit if taglist is last window
 "let Tlist_Exit_OnlyWindow = 1
@@ -186,6 +183,7 @@ endif
 set nocompatible      " We're running Vim, not Vi!
 syntax on             " Enable syntax highlighting
 filetype plugin indent on    " Enable filetype-specific indenting
+autocmd BufRead,BufNewFile *.yaml filetype indent off
 
 " Tell vim to remember certain things when we exit
 "  '10  :  marks will be remembered for up to 10 previously edited files
