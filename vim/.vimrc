@@ -101,16 +101,13 @@ highlight   PmenuSbar           term=NONE cterm=NONE ctermfg=7 ctermbg=0 gui=NON
 highlight   PmenuThumb          term=NONE cterm=NONE ctermfg=0 ctermbg=7 gui=NONE guifg=Black guibg=White 
 
 " Highlight syntax
-" syntax on
+syntax on
 
 " KEY BINDINGS
 
-" Tab completion of variables
-"inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
-"inoremap <S-tab> <c-r>=InsertTabWrapper ("backward")<cr>
 
 " Syntax check
-map <F1> :w ! perl -c<CR>
+map <F1> :w ! ruby -c<CR>
 
 " Run the code
 "map <F2> :w ! perl<CR>
