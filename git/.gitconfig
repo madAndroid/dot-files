@@ -5,7 +5,7 @@
 #### from: http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
 [alias]
 
-    cp = cherry-pick
+    cp = cherry-pick --no-ff --no-commit
     st = status -s
     s  = status
     pu = pull
@@ -42,7 +42,7 @@
     diffr  = "!f() { git diff "$1"^.."$1"; }; f"
 
     f = "!git ls-files | grep -i"
-    gr = grep -Ii
+    gr = "grep --break --heading --line-number"
 
     ### list alias:
     la = "!git config -l | grep alias | cut -c 7-"
@@ -80,4 +80,7 @@
 [push]
     default = simple
 [core]
-	editor = vim
+    editor = vim
+[grep]
+    lineNumber = true
+    extendRegexp = true
