@@ -22,9 +22,9 @@
     df = diff --color
     dfw = diff --word-diff=color --word-diff=plain
 
-    rh = reset HEAD
+    aa = "add --all"
 
-    gg = grep
+    rh = reset HEAD
 
     l = !git log --graph --pretty='%C(yellow)%h%Creset %Cgreen(%ar)%Creset %C(bold blue)<%an>%Creset %C(red)%d%Creset %s' $*
     ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
@@ -43,6 +43,7 @@
 
     f = "!git ls-files | grep -i"
     gr = "grep --break --heading --line-number"
+    gg = "grep"
 
     ### list alias:
     la = "!git config -l | grep alias | cut -c 7-"
