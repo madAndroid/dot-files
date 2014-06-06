@@ -98,7 +98,7 @@ set nogdefault
 highlight   Pmenu               term=NONE cterm=NONE ctermfg=7 ctermbg=5 gui=NONE guifg=White guibg=Magenta
 highlight   PmenuSel            term=NONE cterm=NONE ctermfg=0 ctermbg=7 gui=NONE guifg=Black guibg=White
 highlight   PmenuSbar           term=NONE cterm=NONE ctermfg=7 ctermbg=0 gui=NONE guifg=White guibg=Black
-highlight   PmenuThumb          term=NONE cterm=NONE ctermfg=0 ctermbg=7 gui=NONE guifg=Black guibg=White 
+highlight   PmenuThumb          term=NONE cterm=NONE ctermfg=0 ctermbg=7 gui=NONE guifg=Black guibg=White
 
 " Highlight syntax
 syntax on
@@ -109,13 +109,10 @@ syntax on
 " Syntax check
 map <F1> :w ! ruby -c<CR>
 
-" Run the code
-"map <F2> :w ! perl<CR>
-
 " Toggle search highlighting
 map <F2> :set hlsearch!<CR>
 
-" View POD
+" Clear whitespace
 map <F3> :%s/\s\+$//<CR>
 
 " See the diffs of the current file
@@ -125,15 +122,19 @@ map <F4> :! git diff --color %<CR>
 map <F5> : s/^/#/<CR>
 map <F6> : s/^#//<CR>
 
+"Re-indent
+map <F7> gg=G<CR>
+
 " Numbering on/off
-map <F7> :set nonu<CR>
-map <F8> :set nu<CR>
+map <F8> :set nu!<CR>
 
 " Toggle paste mode
 map <F9> :set paste!<CR>
 
 " sudo save
 map <F10> :w ! sudo tee % <CR><CR>
+
+" Solarized!
 
 " Taglist settings
 " nnoremap <silent> <F5> :TlistToggle<CR>
@@ -161,6 +162,10 @@ map <F10> :w ! sudo tee % <CR><CR>
 
 " autocmd BufReadPost *.tt set syntax=html
 
+" Tab completion of variables
+" inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
+" inoremap <S-tab> <c-r>=InsertTabWrapper ("backward")<cr>
+
 "function! InsertTabWrapper(direction)
 "    let col = col('.') - 1
 "    if !col || getline('.')[col - 1] !~ '\k'
@@ -171,14 +176,19 @@ map <F10> :w ! sudo tee % <CR><CR>
 "        return "\<c-n>"
 "    endif
 "endfunction
+"
+"Ctrl-P options:
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMRU'
 
 if has("autocmd")
     au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
         \| exe "normal g'\"" | endif
 endif
 
-set nocompatible      " We're running Vim, not Vi!
-syntax on             " Enable syntax highlighting
+"set nocompatible      " We're running Vim, not Vi!
+"syntax on             " Enable syntax highlighting
 filetype plugin indent on    " Enable filetype-specific indenting
 autocmd BufRead,BufNewFile *.yaml filetype indent off
 
