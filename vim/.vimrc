@@ -181,6 +181,8 @@ map <F10> :w ! sudo tee % <CR><CR>
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMRU'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_follow_symlinks = 1
 
 if has("autocmd")
     au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
