@@ -54,7 +54,9 @@
     ### Stashes
     sl = stash list
     sa = stash apply
+    sp = stash pop
     ss = stash save
+    ssp = stash show -p
 
 #[diff] 
 #    external = git_diff_wrapper

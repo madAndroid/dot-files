@@ -6,8 +6,8 @@ set encoding=utf8
 " Allow lines to extend off the side of the screen
 set nowrap
 
-" More than the standard 50 lines of scrollback
-set history=300
+" set a longer history
+set history=1000
 
 " Start scrolling when we're 5 chars from the edge of the screen
 set sidescrolloff=5
@@ -83,7 +83,7 @@ set splitright
 "set iskeyword=@,48-57,192-255
 
 " Look for tagfile here
-set tags=~/.tags
+set tags=./tags;
 
 " Status bar is blue
 set t_mr=[0;1;37;44m
@@ -95,6 +95,11 @@ set modeline
 set modelines=5
 set nogdefault
 
+" Automatically reload files on changes. Useful for git rebasing and such
+set autoread
+
+
+
 highlight   Pmenu               term=NONE cterm=NONE ctermfg=7 ctermbg=5 gui=NONE guifg=White guibg=Magenta
 highlight   PmenuSel            term=NONE cterm=NONE ctermfg=0 ctermbg=7 gui=NONE guifg=Black guibg=White
 highlight   PmenuSbar           term=NONE cterm=NONE ctermfg=7 ctermbg=0 gui=NONE guifg=White guibg=Black
@@ -103,7 +108,11 @@ highlight   PmenuThumb          term=NONE cterm=NONE ctermfg=0 ctermbg=7 gui=NON
 " Highlight syntax
 syntax on
 
+" With a visual block selected, align =>'s
+vmap <silent> . :Align =><CR>
+
 " KEY BINDINGS
+
 
 
 " Syntax check
@@ -132,8 +141,24 @@ map <F8> :set nu!<CR>
 map <F9> :set paste!<CR>
 
 " sudo save
-map <F10> :w ! sudo tee % <CR><CR>
+" map <F10> :w ! sudo tee % <CR><CR>
+" Force Saving Files that Require Root Permission
+cmap w!! %!sudo tee > /dev/null %
 
+" Gundo => http://sjl.bitbucket.org/gundo.vim/
+nnoremap <F10> :GundoToggle<CR>
+
+" http://vimbits.com/bits?sort=top
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
+" Easy split navigation
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-l> <C-w>l
+ 
 " Solarized!
 
 " Taglist settings
@@ -184,6 +209,7 @@ let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_follow_symlinks = 1
 
+" Have Vim jump to the last position when opening a file
 if has("autocmd")
     au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
         \| exe "normal g'\"" | endif
@@ -194,6 +220,9 @@ endif
 filetype plugin indent on    " Enable filetype-specific indenting
 autocmd BufRead,BufNewFile *.yaml filetype indent off
 
+" automatically reload vimrc when it's saved
+au BufWritePost .vimrc so ~/.vimrc
+
 " Tell vim to remember certain things when we exit
 "  '10  :  marks will be remembered for up to 10 previously edited files
 "  "100 :  will save up to 100 lines for each register
@@ -201,3 +230,11 @@ autocmd BufRead,BufNewFile *.yaml filetype indent off
 "  %    :  saves and restores the buffer list
 "  n... :  where to save the viminfo files
 set viminfo='10,\"100,:20,%,n~/.viminfo
+
+
+" Turn on spell checking with English dictionary
+" set spell
+" set spelllang=en
+" set spellsuggest=9 "show only 9 suggestions for misspelled words
+" " Selectively turn spelling off.
+" autocmd FileType c,cpp,lisp,puppet,ruby,vim setlocal nospell
