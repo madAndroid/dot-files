@@ -98,8 +98,6 @@ set nogdefault
 " Automatically reload files on changes. Useful for git rebasing and such
 set autoread
 
-
-
 highlight   Pmenu               term=NONE cterm=NONE ctermfg=7 ctermbg=5 gui=NONE guifg=White guibg=Magenta
 highlight   PmenuSel            term=NONE cterm=NONE ctermfg=0 ctermbg=7 gui=NONE guifg=Black guibg=White
 highlight   PmenuSbar           term=NONE cterm=NONE ctermfg=7 ctermbg=0 gui=NONE guifg=White guibg=Black
@@ -112,8 +110,6 @@ syntax on
 vmap <silent> . :Align =><CR>
 
 " KEY BINDINGS
-
-
 
 " Syntax check
 map <F1> :w ! ruby -c<CR>
@@ -159,6 +155,10 @@ vnoremap > >gv
 " nnoremap <C-k> <C-w>k
 " nnoremap <C-l> <C-w>l
  
+" remap plus and minus for pageup/down
+map = <PageUp>
+map - <PageDown>
+
 " Solarized!
 
 " Taglist settings
