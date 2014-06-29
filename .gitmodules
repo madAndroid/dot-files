@@ -13,3 +13,6 @@
 [submodule "vim/.vim/bundle/gundo"]
 	path = vim/.vim/bundle/gundo
 	url = http://github.com/sjl/gundo.vim.git
+[submodule "vim/bin/vimpager"]
+	path = vim/bin/vimpager
+	url = git@github.com:rkitover/vimpager.git
