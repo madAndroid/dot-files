@@ -2,6 +2,9 @@
 " No compatibility – necessary for mappings to work.
 set nocompatible
 
+" UTF8 by default
+set encoding=utf8
+
 " Status line
 set laststatus=0
 set cmdheight=1
@@ -14,14 +17,30 @@ set background=dark
 " Turn syntax on
 syntax enable
 
+" Start scrolling when we're 5 chars from the edge of the screen
+set sidescrolloff=5
+
+" Start scrolloing when we're 5 lines from the top/bottom of the screen
+set scrolloff=5
+
 " No menu bar and tool bar
 set guioptions=aiMr
+
+" Don't care about case when searching...
+set ignorecase
+
+" ...Unless we include capitals
+set smartcase
 
 " Key bindings.
 nmap b <C-B><C-G>
 nmap q :q!<CR>
 nmap <Up> <C-Y>
 nmap <Down> <C-E>
+
+" remap plus and minus for pageup/down
+map = <PageUp>
+map - <PageDown>
 
 " To type the following line, type *two* C-V's followed by two spaces. This
 " is how you map the spacebar.
