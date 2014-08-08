@@ -104,6 +104,7 @@ highlight   PmenuSbar           term=NONE cterm=NONE ctermfg=7 ctermbg=0 gui=NON
 highlight   PmenuThumb          term=NONE cterm=NONE ctermfg=0 ctermbg=7 gui=NONE guifg=Black guibg=White
 
 " Highlight syntax
+syntax enable
 syntax on
 
 " With a visual block selected, align =>'s
