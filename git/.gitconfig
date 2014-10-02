@@ -65,7 +65,7 @@
 #    diff = 
 
 [color]
-  ui = auto
+  ui = true
 [color "branch"]
   current = yellow reverse
   local = yellow
@@ -84,6 +84,7 @@
     default = simple
 [core]
     editor = vim
+    pager = less
 [grep]
     lineNumber = true
     extendRegexp = true

@@ -85,6 +85,17 @@ set splitright
 " Look for tagfile here
 set tags=./tags;
 
+" open tag in split window
+map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+" Puppet Integration {{{
+" command! -nargs=+ Grep execute "noautocmd silent lvimgrep /<args>/gj ~/puppet/**/*.pp" | lopen 10
+"set shellcmdflag=-ic
+set kp=pi
+set iskeyword=-,:,@,48-57,_,192-255
+" set tags=tags;~/
+" }}}
+
 " Status bar is blue
 set t_mr=[0;1;37;44m
 
@@ -162,6 +173,16 @@ map - <PageDown>
 
 " Solarized!
 
+" let g:solarized_termcolors = 16
+" let g:solarized_termcolors=256
+" let g:solarized_termtrans = 1
+" let g:solarized_visibility = "high"
+" let g:solarized_contrast = "high"
+
+" colorscheme solarized
+
+" set cursorline
+
 " Taglist settings
 " nnoremap <silent> <F5> :TlistToggle<CR>
 
@@ -216,10 +237,10 @@ if has("autocmd")
         \| exe "normal g'\"" | endif
 endif
 
-"set nocompatible      " We're running Vim, not Vi!
+" set nocompatible      " We're running Vim, not Vi!
 "syntax on             " Enable syntax highlighting
-filetype plugin indent on    " Enable filetype-specific indenting
-autocmd BufRead,BufNewFile *.yaml filetype indent off
+" filetype plugin indent on    " Enable filetype-specific indenting
+" #autocmd BufRead,BufNewFile *.yaml filetype indent off
 
 " automatically reload vimrc when it's saved
 au BufWritePost .vimrc so ~/.vimrc
@@ -239,3 +260,10 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 " set spellsuggest=9 "show only 9 suggestions for misspelled words
 " " Selectively turn spelling off.
 " autocmd FileType c,cpp,lisp,puppet,ruby,vim setlocal nospell
+
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_quiet_messages = {'level': 'warnings'} 

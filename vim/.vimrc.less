@@ -1,3 +1,4 @@
+execute pathogen#infect()
 
 " No compatibility – necessary for mappings to work.
 set nocompatible
@@ -15,7 +16,17 @@ set readonly
 set background=dark
 
 " Turn syntax on
-syntax enable
+syntax on
+
+" let g:solarized_termcolors = 16
+let g:solarized_termcolors=256
+let g:solarized_termtrans = 1
+" let g:solarized_visibility = "high"
+" let g:solarized_contrast = "high"
+
+" colorscheme solarized
+
+let vimpager_passthrough = 1
 
 " Start scrolling when we're 5 chars from the edge of the screen
 set sidescrolloff=5
@@ -44,4 +55,4 @@ map - <PageDown>
 
 " To type the following line, type *two* C-V's followed by two spaces. This
 " is how you map the spacebar.
-nmap ^V <C-F><C-G>
+" nmap ^V <C-F><C-G>
