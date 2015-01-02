@@ -267,3 +267,17 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_quiet_messages = {'level': 'warnings'} 
+
+let puppet_two_spaces=$PUPPET_2_SPACES
+
+function! PuppetRubyStyle()
+    set tabstop=2
+    set softtabstop=2
+    set shiftwidth=2
+    set expandtab
+endfunction
+
+if puppet_two_spaces == 'true'
+    call PuppetRubyStyle()
+endif
+
