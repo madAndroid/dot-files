@@ -7,11 +7,12 @@
 
     cp = cherry-pick --no-ff --no-commit
     st = status -s
-    s  = status
+    s  = status -sb
     pu = pull
     pm = pull --no-ff --no-commit
     fu = fetch upstream
     mum = merge upstream/master --no-ff --no-commit
+    rum = rebase upstream/master --interactive
     mg = merge --no-ff --no-commit
     cl = clone
     ci = commit
@@ -21,6 +22,8 @@
     dc = diff --cached
     df = diff --color
     dfw = diff --word-diff=color --word-diff=plain
+
+    pr = "!f() { git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1; }; f"
 
     aa = "add --all"
 
@@ -85,6 +88,10 @@
 [core]
     editor = vim
     pager = less
+    autocrlf = input
+    excludesfile = ~/.gitignore
 [grep]
     lineNumber = true
     extendRegexp = true
+[init]
+    templatedir = ~/.git_template
