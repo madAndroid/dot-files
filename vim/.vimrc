@@ -166,10 +166,19 @@ vnoremap > >gv
 " nnoremap <C-j> <C-w>j
 " nnoremap <C-k> <C-w>k
 " nnoremap <C-l> <C-w>l
- 
+
 " remap plus and minus for pageup/down
-map = <PageUp>
-map - <PageDown>
+" map = <PageUp>
+" map - <PageDown>
+
+:" Map Ctrl-A -> Start of line, Ctrl-E -> End of line
+map <C-a> <Home>
+map <C-e> <End>
+
+:" Map 'dt' and 'do' - opens split windows in vimdiff mode
+:" see https://www.nesono.com/?q=node/449
+map <F11> :windo diffthis<CR>
+map <F12> :windo diffo<CR>
 
 " Solarized!
 
@@ -264,17 +273,25 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_quiet_messages = {'level': 'warnings'} 
+"
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_enable_signs = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_quiet_messages = {'level': 'warnings'}
+"
+" let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['pp'],'passive_filetypes': [] }
+"
+" map <C-s> :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+"
+" let g:syntastic_puppet_puppetlint_args = '--no-autoloader_layout-check'
+" let g:syntastic_puppet_puppetlint_args = '--no_class_inherits_from_params_class-check'
 
 let puppet_two_spaces=$PUPPET_2_SPACES
 
 function! PuppetRubyStyle()
-    set tabstop=2
-    set softtabstop=2
-    set shiftwidth=2
-    set expandtab
+    set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 endfunction
 
 if puppet_two_spaces == 'true'
