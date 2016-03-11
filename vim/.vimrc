@@ -139,8 +139,8 @@ map <F4> :! git diff --color %<CR>
 map <F5> : s/^/#/<CR>
 map <F6> : s/^#//<CR>
 
-"Re-indent
-map <F7> gg=G<CR>
+"Re-indent - see http://vim.wikia.com/wiki/Fix_indentation
+map <F7> mzgg=G`z<CR>
 
 " Numbering on/off
 map <F8> :set nu!<CR>
