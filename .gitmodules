@@ -1,9 +1,6 @@
 [submodule "vim/.vim/bundle/vim-fugitive"]
 	path = vim/.vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vim/.vim/bundle/snipmate.vim"]
-	path = vim/.vim/bundle/snipmate.vim
-	url = https://github.com/msanders/snipmate.vim.git
 [submodule "vim/.vim/bundle/puppet"]
 	path = vim/.vim/bundle/puppet
 	url = git://github.com/rodjek/vim-puppet.git
@@ -16,9 +13,6 @@
 [submodule "vim/.vim/bundle/vim-colors-solarized"]
 	path = vim/.vim/bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "vim/.vim/bundle/syntastic"]
-	path = vim/.vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
 [submodule "vim/.vim/bundle/vim-bracketed-paste"]
 	path = vim/.vim/bundle/vim-bracketed-paste
 	url = https://github.com/ConradIrwin/vim-bracketed-paste
@@ -34,3 +28,9 @@
 [submodule "vim/.vim/bundle/ack"]
 	path = vim/.vim/bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
+[submodule "vim/.vim/vim/.vim/bundle/ack"]
+	path = vim/.vim/vim/.vim/bundle/ack
+	url = https://github.com/mileszs/ack.vim.git
+[submodule "vim/.vim/bundle/vim-groovy"]
+	path = vim/.vim/bundle/vim-groovy
+	url = https://github.com/vim-scripts/groovy.vim
