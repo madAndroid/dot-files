@@ -13,6 +13,7 @@
     fu = fetch upstream
     mum = merge upstream/master --no-ff --no-commit
     rum = rebase upstream/master --interactive
+    rmi = rebase master --interactive
     mg = merge --no-ff --no-commit
     cl = clone
     ci = commit
@@ -24,6 +25,7 @@
     dfw = diff --word-diff=color --word-diff=plain
 
     pr = "!f() { git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1; }; f"
+    pf = push --force-with-lease
 
     aa = "add --all"
 
@@ -60,7 +62,16 @@
     sp = stash pop
     ss = stash save
     ssp = stash show -p
-
+#	branches = !legit branches
+#	graft = !legit graft
+#	harvest = !legit harvest
+#	publish = !legit publish
+#	unpublish = !legit unpublish
+#	sprout = !legit sprout
+#	sync = !legit sync
+#	switch = !legit switch
+#	resync = !legit resync
+#
 #[diff] 
 #    external = git_diff_wrapper
 #
