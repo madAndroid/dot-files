@@ -88,6 +88,9 @@ set tags=./tags;
 " open tag in split window
 map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
+" Disable ex-mode
+nnoremap Q <nop>
+
 " Puppet Integration {{{
 " command! -nargs=+ Grep execute "noautocmd silent lvimgrep /<args>/gj ~/puppet/**/*.pp" | lopen 10
 "set shellcmdflag=-ic
@@ -124,6 +127,7 @@ vmap <silent> . :Align =><CR>
 " KEY BINDINGS
 
 " Syntax check
+
 map <F1> :w ! ruby -c<CR>
 
 " Toggle search highlighting
@@ -146,7 +150,16 @@ map <F7> mzgg=G`z<CR>
 map <F8> :set nu!<CR>
 
 " Toggle paste mode
-map <F9> :set paste!<CR>
+" map <F9> :set paste!<CR>
+
+" Toggle folding
+" inoremap <F9> <C-O>za
+" nnoremap <F9> za
+" onoremap <F9> <C-C>za
+" vnoremap <F9> za
+
+" Toggle folding
+map <F9> :setlocal foldmethod=manual<CR>
 
 " sudo save
 " map <F10> :w ! sudo tee % <CR><CR>
@@ -246,6 +259,30 @@ if has("autocmd")
         \| exe "normal g'\"" | endif
 endif
 
+" Display extra whitespace
+" set list listchars=tab:»·,trail:·,nbsp:·
+
+" Delete all empty lines
+" :g/^\s*$/d
+
+" Use one space, not two, after punctuation.
+set nojoinspaces
+
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  " let g:ctrlp_use_caching = 0
+endif
+
+" Grep word under cursor
+" nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
 " set nocompatible      " We're running Vim, not Vi!
 "syntax on             " Enable syntax highlighting
 " filetype plugin indent on    " Enable filetype-specific indenting
@@ -255,12 +292,12 @@ endif
 au BufWritePost .vimrc so ~/.vimrc
 
 " Tell vim to remember certain things when we exit
-"  '10  :  marks will be remembered for up to 10 previously edited files
-"  "100 :  will save up to 100 lines for each register
-"  :20  :  up to 20 lines of command-line history will be remembered
+"  '100  :  marks will be remembered for up to 10 previously edited files
+"  "1000 :  will save up to 1000 lines for each register
+"  :100  :  up to 20 lines of command-line history will be remembered
 "  %    :  saves and restores the buffer list
 "  n... :  where to save the viminfo files
-set viminfo='10,\"100,:20,%,n~/.viminfo
+set viminfo='100,\"1000,:100,%,n~/.viminfo
 
 
 " Turn on spell checking with English dictionary
@@ -288,13 +325,33 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 " let g:syntastic_puppet_puppetlint_args = '--no-autoloader_layout-check'
 " let g:syntastic_puppet_puppetlint_args = '--no_class_inherits_from_params_class-check'
 
-let puppet_two_spaces=$PUPPET_2_SPACES
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+
+"#let g:gitgutter_terminal_reports_focus=0
+let g:gitgutter_grep=''
+
+
+
+
+let g:gitgutter_async=0
+let g:gitgutter_diff_base='HEAD'
+
+let puppet_four_spaces=$PUPPET_4_SPACES
 
 function! PuppetRubyStyle()
-    set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+    set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 endfunction
 
-if puppet_two_spaces == 'true'
+if puppet_four_spaces == 'true'
     call PuppetRubyStyle()
 endif
 
+filetype on
+filetype plugin on
+filetype indent on
+
+" disable folding
+set nofoldenable
+
+" Fuzzy finder:
+set rtp+=/usr/local/opt/fzf
