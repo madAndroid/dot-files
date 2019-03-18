@@ -42,7 +42,7 @@
 	url = git@github.com:tpope/vim-surround.git
 [submodule "vim/.vim/bundle/vim-go"]
 	path = vim/.vim/bundle/vim-go
-	url = https://github.com/fatih/vim-go.git
+	url = git@github.com:fatih/vim-go.git
 [submodule "vim/.vim/bundle/ctrlp.vim"]
 	path = vim/.vim/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
