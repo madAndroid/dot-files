@@ -46,3 +46,6 @@
 [submodule "vim/.vim/bundle/ctrlp.vim"]
 	path = vim/.vim/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
+[submodule "vim/.vim/bundle/auto-pairs"]
+	path = vim/.vim/bundle/auto-pairs
+	url = git@github.com:jiangmiao/auto-pairs.git
