@@ -355,3 +355,5 @@ set nofoldenable
 
 " Fuzzy finder:
 set rtp+=/usr/local/opt/fzf
+
+set iskeyword-=:

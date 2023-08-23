@@ -35,5 +35,5 @@ if @working_directory != ENV['HOME']
   load @local_irbrc if File.exists?(@local_irbrc)
 end
 
-remove_instance_variable(:@working_directory)
-remove_instance_variable(:@local_irbrc)
+#remove_instance_variable(:@working_directory)
+#remove_instance_variable(:@local_irbrc)
