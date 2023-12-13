@@ -2,6 +2,9 @@
 	name = Andrew Stangl
 	email = andrewstangl@gmail.com
 
+[includeIf "gitdir:/Users/andrew/repos/modu/weaveworks/**"]
+  path = /Users/andrew/repos/modu/weaveworks/.gitconfig
+
 #### from: http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
 [alias]
 
@@ -66,8 +69,10 @@
     sp = stash pop
     ss = stash save
     ssp = stash show -p
-	spush = push --recurse-submodules=on-demand
-	spull = !git pull && git submodule sync --recursive && git submodule update --init --recursive
+	  spush = push --recurse-submodules=on-demand
+	  spull = !git pull && git submodule sync --recursive && git submodule update --init --recursive
+
+    revs = rev-parse --short HEAD
 #	branches = !legit branches
 #	graft = !legit graft
 #	harvest = !legit harvest
@@ -146,44 +151,14 @@
 #[http]
 #  sslVerify = false
 
-#[credential "https://gitlab.devops.telekom.de"]
-#  username = andrew.stangl@weave.works
-#	provider = generic
-#  #helper = osxkeychain
-
-
-
-[url "https://x-access-token:Fspz6Z54okRsB_CDEX3v@gitlab.devops.telekom.de/schiff"]
-  insteadOf = git@gitlab.devops.telekom.de:schiff
-
-[url "https://x-access-token:QtE3xavUYVUvqPZTjVGG@gitlab.devops.telekom.de/schiff"]
-  insteadOf = https://gitlab.devops.telekom.de/schiff
-
-[url "https://x-access-token:Fspz6Z54okRsB_CDEX3v@gitlab.devops.telekom.de/cit"]
-  insteadOf = git@gitlab.devops.telekom.de:cit
-
-[url "https://x-access-token:QtE3xavUYVUvqPZTjVGG@gitlab.devops.telekom.de/cit"]
-  insteadOf = https://gitlab.devops.telekom.de/cit
-
-
-#[url "git@gitlab.devops.telekom.de/schiff"]
-#  #insteadOf = https://gitlab.devops.telekom.de/schiff
-#  insteadOf = https://gitlab.devops.telekom.de/schiff
-
-
-[credential "https://MMTOL@dev.azure.com"]
-  UseHttpPath = true
-  helper = /usr/local/bin/git-credential-manager-core
-  #helper = manager-core
 [url "git@github.com:"]
 	insteadOf = https://github.com/
-[credential "https://dev.azure.com"]
-	useHttpPath = true
 
-#[http]
-#	extraheader = PRIVATE-TOKEN: Fspz6Z54okRsB_CDEX3v
-[credential]
-	helper = 
-	helper = /usr/local/share/gcm-core/git-credential-manager
+# [credential "https://dev.azure.com"]
+# 	useHttpPath = true
+
+# [credential]
+# 	helper = /usr/local/share/gcm-core/git-credential-manager
+
 [merge]
 	conflictstyle = diff3
